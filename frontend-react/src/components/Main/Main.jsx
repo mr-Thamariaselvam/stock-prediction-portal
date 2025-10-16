@@ -15,7 +15,11 @@ function Main() {
             widely used by stock analysts to inform trading and investment
             decisions.
           </p>
-          <Button btnName={"Login"} btnClass={"btn-outline-info w-20"} />
+          <Button
+            btnName={"Login"}
+            btnClass={"btn-outline-info w-20"}
+            url={"/login"}
+          />
         </div>
       </div>
     </>
