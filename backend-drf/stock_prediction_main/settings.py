@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'api',
     'corsheaders',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,11 @@ CORS_ALLOWED_ORIGINS = [
 # Optional: allow all headers and methods
 CORS_ALLOW_HEADERS = ['*']
 CORS_ALLOW_METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
+
+# Default authentication Changed to the JWTAuthentication
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}

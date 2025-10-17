@@ -1,4 +1,4 @@
-import { Global } from "../../../utils";
+import { Global } from "../../src/utils";
 
 class Auth {
   static onAuthChange(callback) {

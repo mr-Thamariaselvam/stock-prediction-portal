@@ -14,6 +14,7 @@ async function getHeaders() {
   let token = null;
   try {
     token = await getAccessToken();
+    Logger.log(token);
   } catch (error) {
     Logger.error(error);
   }

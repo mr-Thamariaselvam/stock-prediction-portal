@@ -59,7 +59,9 @@ const Register = () => {
         });
         AlertNotify.error("Unable to register, please try again");
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (

@@ -32,6 +32,18 @@ class User {
         });
     });
   }
+
+  static loginUser(data) {
+    return new Promise((reslove, reject) => {
+      BackendApi.ServerApi.UserApi.loginUser(data)
+        .then((user) => {
+          reslove(user);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
 }
 
 export default User;

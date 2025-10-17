@@ -13,6 +13,18 @@ class UserApi {
         });
     });
   }
+
+  static loginUser(data) {
+    return new Promise((resolve, reject) => {
+      fetchApi("token", Methods.POST, data)
+        .then((user) => {
+          resolve(user);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
 }
 
 export default UserApi;
