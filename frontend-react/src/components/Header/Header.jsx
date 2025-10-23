@@ -24,13 +24,20 @@ const Header = () => {
         </div>
         <>
           {loggedIn ? (
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={onClickLogout}
-            >
-              Logout
-            </button>
+            <div className="container w-50 d-flex justify-content-end gap-2">
+              <Button
+                btnName={"Dashboard"}
+                btnClass={"btn-info w-20"}
+                url={"/dashboard"}
+              />
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={onClickLogout}
+              >
+                Logout
+              </button>
+            </div>
           ) : (
             <div className="container w-50 d-flex justify-content-end gap-2">
               <Button

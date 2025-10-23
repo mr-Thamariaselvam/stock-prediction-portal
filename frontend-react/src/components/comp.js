@@ -5,6 +5,7 @@ import Footer from "./Footer/Footer";
 import Register from "./Register/Register";
 import Login from "./Login/Login.Jsx";
 import { AlertNotify, ToastContainer } from "./alertnotify";
+import Dashboard from "./dashboard";
 
 const Comp = {
   Button,
@@ -15,6 +16,7 @@ const Comp = {
   Login,
   AlertNotify,
   ToastContainer,
+  Dashboard,
 };
 
 export default Comp;

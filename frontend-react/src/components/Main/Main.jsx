@@ -16,9 +16,9 @@ function Main() {
             decisions.
           </p>
           <Button
-            btnName={"Login"}
+            btnName={"Explore More"}
             btnClass={"btn-outline-info w-20"}
-            url={"/login"}
+            url={"/dashboard"}
           />
         </div>
       </div>

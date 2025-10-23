@@ -36,7 +36,7 @@ const Login = () => {
       .then((user) => {
         setAuthenticatedUser(user);
         AlertNotify.success("Logged In Successfully");
-        navigate("/");
+        navigate("/dashboard");
       })
       .catch((error) => {
         AlertNotify.error(error?.detail ?? "Unable to login, please try again");

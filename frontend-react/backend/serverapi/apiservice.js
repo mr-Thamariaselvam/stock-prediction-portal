@@ -30,13 +30,6 @@ const API_TIME_OUT = 60000;
 
 /**
  * Main API Fetch function
- * @param {*} api endpoint (string)
- * @param {*} method HTTP method (GET, POST, etc.)
- * @param {*} data request payload
- * @param {*} useVersion whether to prefix /api/v1
- * @param {*} responseType optional (blob, json, etc.)
- * @param {*} giveResponse pass raw response to callback
- * @param {*} options optional {timeout: number}
  */
 const fetchApi = (
   api,
@@ -48,6 +41,7 @@ const fetchApi = (
   options = {}
 ) => {
   const url = useVersion ? `/${VERSION}/${api}/` : `/${api}/`;
+
   return new Promise((resolve, reject) => {
     const apiServer = async () => {
       const headers = await getHeaders();
@@ -101,5 +95,48 @@ const fetchApi = (
     apiServer();
   });
 };
+
+/* ---------------------------
+   Axios Interceptor Section
+--------------------------- */
+apiInstance.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+
+    // If token expired (401), try refresh once
+    if (error?.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      const refreshToken = localStorage.getItem("refreshToken");
+      if (!refreshToken) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        window.location.href = "/login";
+        return Promise.reject(error);
+      }
+
+      try {
+        const refreshResponse = await axios.post(
+          `${BASE_URL}/${VERSION}/token/refresh/`,
+          { refresh: refreshToken }
+        );
+
+        const newAccessToken = refreshResponse?.data?.access;
+        if (newAccessToken) {
+          localStorage.setItem("accessToken", newAccessToken);
+          originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+          return apiInstance(originalRequest);
+        }
+      } catch (refreshError) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        return Promise.reject(refreshError);
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 export { fetchApi };

@@ -5,4 +5,5 @@ urlpatterns=[
     path('register/',userViews.RegisterView.as_view(),name='register'),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('producted-view/',userViews.ProdectedView.as_view(),name='producted-view')
 ]
