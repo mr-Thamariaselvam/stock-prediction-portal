@@ -13,6 +13,17 @@ class DashboardApi {
         });
     });
   }
+  static getPredictedStock(data) {
+    return new Promise((resolve, reject) => {
+      fetchApi("predict", Methods.POST, data)
+        .then((data) => {
+          resolve(data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
 }
 
 export default DashboardApi;

@@ -12,6 +12,18 @@ class Dashboard {
         });
     });
   }
+
+  static getPredictedStock(ticker) {
+    return new Promise((resolve, reject) => {
+      BackendApi.ServerApi.DashboardApi.getPredictedStock(ticker)
+        .then((data) => {
+          resolve(data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
 }
 
 export default Dashboard;

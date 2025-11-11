@@ -139,4 +139,4 @@ apiInstance.interceptors.response.use(
   }
 );
 
-export { fetchApi };
+export { fetchApi, BASE_URL };

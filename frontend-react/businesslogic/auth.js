@@ -4,4 +4,8 @@ function getUseAuth() {
   return BackendApi.AuthState.useAuth();
 }
 
-export { getUseAuth };
+function getBaseURL() {
+  return BackendApi.AuthState.getBaseURL();
+}
+
+export { getUseAuth,getBaseURL };

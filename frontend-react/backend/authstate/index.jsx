@@ -1,5 +1,6 @@
 // src/context/AuthContext.jsx
 import { createContext, useContext, useEffect, useState } from "react";
+import { BASE_URL } from "../serverapi/apiservice";
 
 let authenticatedUser = null;
 
@@ -53,4 +54,8 @@ function useAuth() {
   return useContext(AuthContext);
 }
 
-export { AuthContext, AuthProvider, useAuth, getAccessToken };
+function getBaseURL() {
+  return BASE_URL;
+}
+
+export { AuthContext, AuthProvider, useAuth, getAccessToken, getBaseURL };
