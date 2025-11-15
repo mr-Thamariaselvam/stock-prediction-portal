@@ -27,7 +27,7 @@ SECRET_KEY = 'ti-l!o=2_&h#ay0y4*n*dp24fz6is&h$s$9e-(@#eu7o0ik2(_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['stock-prediction-portal-backend-f45o.onrender.com', "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ['stock-prediction-portal-api.onrender.com', "127.0.0.1", "localhost"]
 
 
 # Application definition
