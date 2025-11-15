@@ -39,7 +39,11 @@ const Login = () => {
         navigate("/dashboard");
       })
       .catch((error) => {
-        AlertNotify.error(error?.detail ?? "Unable to login, please try again");
+        AlertNotify.error(
+          error?.response?.data?.details ||
+            error?.message ||
+            "Unable to login, please try again"
+        );
       })
       .finally(() => {
         setLoading(false);

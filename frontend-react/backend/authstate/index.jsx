@@ -14,8 +14,10 @@ function AuthProvider({ children }) {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("accessToken");
-    setLoggedIn(!!token);
+    // Always clear tokens when app starts
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    setLoggedIn(false);
   }, []);
 
   function logout() {

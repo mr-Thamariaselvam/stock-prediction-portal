@@ -18,9 +18,13 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-urlpatterns = [
-    path('admin/', admin.site.urls),
+from django.http import JsonResponse
 
-    # base API endpoint
-    path('api/v1/',include('api.urls'))
-]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+def home(request):
+    return JsonResponse({"message": "Django backend is running!"})
+
+urlpatterns = [
+    path('', home),  # 👈 optional homepage route
+    path('admin/', admin.site.urls),
+    path('api/v1/', include('api.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
